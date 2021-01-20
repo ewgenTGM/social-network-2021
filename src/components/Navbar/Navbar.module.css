@@ -1,0 +1,11 @@
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: cadetblue;
+}
+
+.nav-link{
+    text-decoration: none;
+    margin-bottom: 10px;
+}

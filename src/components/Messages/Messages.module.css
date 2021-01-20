@@ -1,0 +1,34 @@
+.chat a {
+    text-decoration: none;
+    color: #285473;
+    font-size: 20px;
+}
+
+.chat {
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+.messages {
+
+}
+
+.send_message_block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 15px 0;
+}
+
+.send_message_btn {
+    border-radius: 2px;
+    border: none;
+    background-color: rgb(129, 173, 255);
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+    color: #285473;
+    margin: 10px 0;
+}

@@ -1,0 +1,23 @@
+.add_post_btn {
+    border-radius: 2px;
+    border: none;
+    background-color: rgb(129, 173, 255);
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    width: 150px;
+    color: #285473;
+}
+
+.new_post_input {
+    resize: vertical;
+    max-height: 150px;
+    height: auto;
+    width: 90%;
+
+}
+
+.new_post_block{
+    margin: 0 5px;
+}
