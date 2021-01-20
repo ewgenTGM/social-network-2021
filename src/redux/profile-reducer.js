@@ -59,11 +59,13 @@ const initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
+    let newState = {...state};
     const addPost = (text) => {
+        debugger
         if (text.trim() === '') {
             return
         }
-        state.userPosts.postItems.unshift({
+        newState.userPosts.postItems.unshift({
             id: v1(),
             message: text,
             dislikes: 100,
@@ -98,7 +100,7 @@ const profileReducer = (state = initialState, action) => {
         default:
             return state;
     }
-    return state;
+    return newState;
 }
 
 export default profileReducer;

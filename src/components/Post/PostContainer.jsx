@@ -11,13 +11,26 @@ const PostContainer = (props) => {
     const addDislike = () => props.dispatch(addDislikeAC(id));
 
     return (
-        <Post addLike={addLike}
-                       addDislike={addDislike}
-                       id={id}
-                       message={message}
-                       likes={likes}
-                       dislikes={dislikes}/>
+        <Post
+            addLike={addLike}
+            addDislike={addDislike}
+            id={id}
+            message={message}
+            likes={likes}
+            dislikes={dislikes}/>
     );
 };
+
+const addStateToProps = (state) => {
+    return {
+
+    }
+}
+
+const addDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
 
 export default PostContainer;
