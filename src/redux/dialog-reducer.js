@@ -1,3 +1,5 @@
+import {v1} from "uuid";
+
 export const SEND_MESSAGE = 'SEND_MESSAGE'
 
 
@@ -7,19 +9,19 @@ export const sendMessageAC = (text) => {
 
 const initialState = {
     dialogItems: [
-        {userId: 1, userName: 'Марина'},
-        {userId: 2, userName: 'Иван'},
-        {userId: 3, userName: 'Дарья'},
-        {userId: 4, userName: 'Алексей'},
-        {userId: 5, userName: 'Саня'},
+        {userId: v1(), userName: 'Марина'},
+        {userId: v1(), userName: 'Иван'},
+        {userId: v1(), userName: 'Дарья'},
+        {userId: v1(), userName: 'Алексей'},
+        {userId: v1(), userName: 'Саня'},
     ],
     userMessages: {
         messageItems: [
-            {messageId: 1, message: 'Привет, Марина'},
-            {messageId: 2, message: 'Привет, Иван'},
-            {messageId: 3, message: 'Привет, Дарья'},
-            {messageId: 4, message: 'Привет, Алексей'},
-            {messageId: 5, message: 'Привет, Саня'},
+            {messageId: v1(), message: 'Привет, Марина'},
+            {messageId: v1(), message: 'Привет, Иван'},
+            {messageId: v1(), message: 'Привет, Дарья'},
+            {messageId: v1(), message: 'Привет, Алексей'},
+            {messageId: v1(), message: 'Привет, Саня'},
         ],
     }
 }
@@ -29,7 +31,7 @@ const dialogReducer = (state = initialState, action) => {
     const sendMessage = (text) => {
 
         state.userMessages.messageItems.unshift({
-            messageId: +Math.random().toFixed(3),
+            messageId: v1(),
             message: text
         });
     }

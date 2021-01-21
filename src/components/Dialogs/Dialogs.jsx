@@ -4,27 +4,27 @@ import {NavLink} from "react-router-dom";
 import MessagesContainer from "../Messages/MessagesContainer";
 
 const Dialogs = (props) => {
-    // const dialogs = props.dialogs.dialogItems.map(item => {
-    //     return (
-    //         <div className={styles.dialog_list_item}>
-    //             <NavLink to={`/dialogs/${item.userId}`}
-    //                      activeClassName={styles.dialog_link_active}
-    //                      key={item.userId}>{item.userName}</NavLink>
-    //         </div>
-    //     )
-    // });
+
+    const dialogs = props.dialogs.map(item => {
+        return (
+            <div className={styles.dialog_list_item}>
+                <NavLink
+                    to={`/dialogs/${item.userId}`}
+                    activeClassName={styles.dialog_link_active}
+                    key={item.userId}>{item.userName}</NavLink>
+            </div>
+        )
+    });
     return (
         <>
             <h3 className={styles.my_dialogs_title}>Мои беседы:</h3>
             <div className={styles.dialogs}>
                 <div className={styles.dialog_list}>
                     <div className={styles.dialog_list}>
-                        {/*{dialogs}*/}
+                        {dialogs}
                     </div>
                 </div>
                 <div className={styles.dialog_messages_block}>
-                    {/*<MessagesContainer messages={props.dialogs.userMessages}*/}
-                    {/*                   dispatch={props.dispatch}/>*/}
                     <MessagesContainer/>
                 </div>
             </div>

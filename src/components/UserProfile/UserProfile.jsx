@@ -1,13 +1,13 @@
 import React from 'react';
-import UserProfileInfo from './UserProfileInfo/UserProfileInfo';
-import UserProfilePosts from './UserProfilePosts/UserProfilePosts';
+import UserProfileInfoContainer from "./UserProfileInfo/UserProfileInfoContainer";
+import UserProfilePostsContainer from "./UserProfilePosts/UserProfilePostsContainer";
 
 
 const UserProfile = () => {
     return (
         <>
-            <UserProfileInfo/>
-            <UserProfilePosts/>
+            <UserProfileInfoContainer/>
+            <UserProfilePostsContainer/>
         </>
     );
 };
