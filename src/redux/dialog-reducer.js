@@ -28,19 +28,25 @@ const initialState = {
 
 const dialogReducer = (state = initialState, action) => {
 
-    const sendMessage = (text) => {
-        state.userMessages.messageItems.unshift({
-            messageId: v1(),
-            message: text
-        });
+
+    switch (action.type) {
+        case SEND_MESSAGE: {
+
+            const newMessage = {
+                messageId: v1(),
+                message: action.payload
+            };
+
+            return {
+                ...state,
+                userMessages: {
+                    messageItems: [newMessage, ...state.userMessages.messageItems]
+                }
+            };
+        }
+        default:
+            return state
     }
-
-
-    if (action.type === SEND_MESSAGE) {
-        sendMessage(action.payload);
-    }
-
-    return state;
 }
 
 export default dialogReducer;

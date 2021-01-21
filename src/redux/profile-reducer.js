@@ -59,47 +59,54 @@ const initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
-    let newState = {...state};
-    const addPost = (text) => {
-        if (text.trim() === '') {
-            return
-        }
-        state.userPosts.postItems.unshift({
-            id: v1(),
-            message: text,
-            dislikes: 100,
-            likes: 100
-        });
-    }
-
-    const addLike = (postId) => {
-        const index = state.userPosts.postItems.findIndex(post => post.id === postId);
-        if (index !== -1) {
-            state.userPosts.postItems[index].likes += 1;
-        }
-    }
-
-    const addDislike = (postId) => {
-        const index = state.userPosts.postItems.findIndex(post => post.id === postId);
-        if (index !== -1) {
-            state.userPosts.postItems[index].dislikes += 1;
-        }
-    }
 
     switch (action.type) {
-        case ADD_POST:
-            addPost(action.payload)
-            break;
-        case ADD_DISLIKE:
-            addDislike(action.payload)
-            break;
-        case ADD_LIKE:
-            addLike(action.payload)
-            break;
+
+        case ADD_POST: {
+            const newPost = {
+                id: v1(),
+                message: action.payload,
+                dislikes: 100,
+                likes: 100
+            };
+            return {
+                ...state,
+                userPosts: {
+                    ...state.userPosts,
+                    postItems: [newPost, ...state.userPosts.postItems]
+                },
+            }
+        }
+
+        case ADD_LIKE: {
+
+            const newState = {
+                ...state,
+                userPosts: {
+                    ...state.userPosts,
+                    postItems: [...state.userPosts.postItems]
+                },
+            };
+            const index = newState.userPosts.postItems.findIndex(post => post.id === action.payload);
+            newState.userPosts.postItems[index].likes++;
+            return newState;
+        }
+
+        case ADD_DISLIKE: {
+            const newState = {
+                ...state,
+                userPosts: {
+                    ...state.userPosts,
+                    postItems: [...state.userPosts.postItems]
+                },
+            };
+            const index = newState.userPosts.postItems.findIndex(post => post.id === action.payload);
+            newState.userPosts.postItems[index].dislikes++;
+            return newState;
+        }
         default:
             return state;
     }
-    return state;
 }
 
 export default profileReducer;

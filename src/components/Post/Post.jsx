@@ -14,14 +14,14 @@ const Post = (props) => {
                     <img
                         src={likeIcon}
                         alt='like'
-                        onClick={props.addLike}/>
+                        onClick={() => props.addLike(props.post.id)}/>
                     <span>{props.post.likes}</span>
                 </div>
                 <div className={classes.post_dislike}>
                     <img
                         src={dislikeIcon}
                         alt='dislike'
-                        onClick={props.addDislike}
+                        onClick={() => props.addDislike(props.post.id)}
                     />
                     <span>{props.post.dislikes}</span>
                 </div>
