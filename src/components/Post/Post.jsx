@@ -5,19 +5,17 @@ import dislikeIcon from '../../dislike.svg';
 
 
 const Post = (props) => {
-    const {id, message, likes, dislikes} = props;
-
     return (
         <div className={classes.post}>
-            <div className={classes.post_id}>{id}</div>
-            <div className={classes.post_content}>{message}</div>
+            <div className={classes.post_id}>{props.post.id}</div>
+            <div className={classes.post_content}>{props.post.message}</div>
             <div className={classes.post_likes}>
                 <div className={classes.post_like}>
                     <img
                         src={likeIcon}
                         alt='like'
                         onClick={props.addLike}/>
-                    <span>{likes}</span>
+                    <span>{props.post.likes}</span>
                 </div>
                 <div className={classes.post_dislike}>
                     <img
@@ -25,7 +23,7 @@ const Post = (props) => {
                         alt='dislike'
                         onClick={props.addDislike}
                     />
-                    <span>{dislikes}</span>
+                    <span>{props.post.dislikes}</span>
                 </div>
             </div>
         </div>

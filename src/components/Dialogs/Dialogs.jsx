@@ -7,7 +7,7 @@ const Dialogs = (props) => {
 
     const dialogs = props.dialogs.map(item => {
         return (
-            <div className={styles.dialog_list_item}>
+            <div className={styles.dialog_list_item} key={item.userId}>
                 <NavLink
                     to={`/dialogs/${item.userId}`}
                     activeClassName={styles.dialog_link_active}

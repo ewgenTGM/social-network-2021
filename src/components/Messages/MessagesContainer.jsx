@@ -3,7 +3,6 @@ import Messages from "./Messages";
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => {
-    debugger
     return {
         messages: state.userDialogsPage.userMessages.messageItems
     }

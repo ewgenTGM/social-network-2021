@@ -1,5 +1,6 @@
 import {connect} from "react-redux";
 import UserProfilePosts from "./UserProfilePosts";
+import {addDislikeAC, addLikeAC} from "../../../redux/profile-reducer";
 
 const mapStateToProps = (store) => {
     return {
@@ -8,7 +9,10 @@ const mapStateToProps = (store) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        addLike: (id)=> dispatch(addLikeAC(id)),
+        addDislike: (id)=> dispatch(addDislikeAC(id))
+    }
 }
 
 const UserProfilePostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserProfilePosts);

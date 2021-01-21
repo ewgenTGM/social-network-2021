@@ -3,6 +3,11 @@ import styles from './NewPost.module.css';
 
 const NewPost = (props) => {
     const [postText, setPostText] = useState('');
+    const addPost = () => {
+        props.addPost(postText);
+        setPostText('');
+    }
+
     return (
         <div className={styles.new_post_block}>
             <div>
@@ -21,7 +26,7 @@ const NewPost = (props) => {
             <div className={styles.add_post_btn}>
                 <button
                     className={styles.add_post_btn}
-                    onClick={e => props.addPost(postText)}>
+                    onClick={addPost}>
                     Добавить пост
                 </button>
             </div>

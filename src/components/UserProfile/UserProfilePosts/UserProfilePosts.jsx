@@ -1,24 +1,17 @@
 import React from 'react';
-import styles from './UserProfilePosts.module.css';
-import PostContainer from "../../Post/PostContainer";
-import NewPostContainer from "../../NewPost/NewPostContainer";
+import Post from "../../Post/Post";
 
 
 const UserProfilePosts = (props) => {
-    debugger
-    const posts = props.posts.reverse().map(post => <PostContainer id={post.id}
-                                                                    key={post.id}
-                                                                    message={post.message}
-                                                                    likes={post.likes}
-                                                                    dislikes={post.dislikes}
-                                                                    dispatch={props.dispatch}
+    const posts = props.posts.reverse().map(post => <Post post={post}
+                                                          key={post.id}
+                                                          addLike={props.addLike}
+                                                          addDislike={props.addDislike}
     />);
     return (
-        <div className={styles.posts_block}>
-            <h3 className={styles.my_posts_title}>Мои посты:</h3>
-            <NewPostContainer/>
+        <>
             {posts}
-        </div>
+        </>
     );
 };
 

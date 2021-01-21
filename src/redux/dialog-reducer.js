@@ -29,7 +29,6 @@ const initialState = {
 const dialogReducer = (state = initialState, action) => {
 
     const sendMessage = (text) => {
-
         state.userMessages.messageItems.unshift({
             messageId: v1(),
             message: text
