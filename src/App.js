@@ -5,6 +5,7 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import {Route, Switch} from 'react-router-dom'
 import NotFound from "./components/NotFound/NotFound";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 function App(props) {
     return (
@@ -21,10 +22,13 @@ function App(props) {
                         <Route
                             exact={true}
                             render={() => <UserProfile/>}
-                               path='/'/>
+                            path='/'/>
                         <Route
                             render={() => <DialogsContainer/>}
                             path='/dialogs'/>
+                        <Route exact={true}
+                               render={() => <UsersContainer/>}
+                               path='/users/'/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>

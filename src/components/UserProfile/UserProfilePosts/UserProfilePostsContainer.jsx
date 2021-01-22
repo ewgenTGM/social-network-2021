@@ -4,7 +4,7 @@ import {addDislikeAC, addLikeAC} from "../../../redux/profile-reducer";
 
 const mapStateToProps = (store) => {
     return {
-        posts: store.userProfilePage.userPosts.postItems,
+        posts: store.userProfilePage.userPosts,
     }
 }
 

@@ -31,6 +31,12 @@ const SideBar = () => {
                     </NavLink>
                 </div>
                 <div className={styles.sidebar_nav_item}>
+                    <NavLink to="/users"
+                             activeClassName={styles.sidebar_link_active}>
+                        Пользователи
+                    </NavLink>
+                </div>
+                <div className={styles.sidebar_nav_item}>
                     <NavLink to="/settings"
                         activeClassName={styles.sidebar_link_active}>
                         Настройки

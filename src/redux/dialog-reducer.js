@@ -8,22 +8,20 @@ export const sendMessageAC = (text) => {
 }
 
 const initialState = {
-    dialogItems: [
+    dialogs: [
         {userId: v1(), userName: 'Марина'},
         {userId: v1(), userName: 'Иван'},
         {userId: v1(), userName: 'Дарья'},
         {userId: v1(), userName: 'Алексей'},
         {userId: v1(), userName: 'Саня'},
     ],
-    userMessages: {
-        messageItems: [
-            {messageId: v1(), message: 'Привет, Марина'},
-            {messageId: v1(), message: 'Привет, Иван'},
-            {messageId: v1(), message: 'Привет, Дарья'},
-            {messageId: v1(), message: 'Привет, Алексей'},
-            {messageId: v1(), message: 'Привет, Саня'},
-        ],
-    }
+    messages: [
+        {messageId: v1(), message: 'Привет, Марина'},
+        {messageId: v1(), message: 'Привет, Иван'},
+        {messageId: v1(), message: 'Привет, Дарья'},
+        {messageId: v1(), message: 'Привет, Алексей'},
+        {messageId: v1(), message: 'Привет, Саня'},
+    ],
 }
 
 const dialogReducer = (state = initialState, action) => {
@@ -39,10 +37,9 @@ const dialogReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                userMessages: {
-                    messageItems: [newMessage, ...state.userMessages.messageItems]
-                }
-            };
+                messages: [newMessage, ...state.messages]
+            }
+
         }
         default:
             return state
