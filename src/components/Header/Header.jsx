@@ -1,29 +1,30 @@
 import React, {useEffect} from "react";
 import classes from "./Header.module.css";
 import ussr from '../../Logo.svg';
-import axios from "axios";
+import {getMe} from "../../DAL/api";
 
 const Header = (props) => {
     useEffect(() => {
-        axios.get('https://social-network.samuraijs.com/api/1.0//auth/me', {
-            withCredentials: true
-        })
-            .then(response => {
-                props.setMe(response.data.data.id, response.data.data.login, response.data.data.email);
-            });
+        getMe().then(response => {
+            props.setMe(response.data.data.id, response.data.data.login, response.data.data.email);
+        });
     }, []);
 
     return (
         <div>
             <header className={classes.header}>
-                <img src={ussr} alt="Logo" className={classes.logo}/>
-                <span>СССR - самая социальная сеть на React'e</span>
+                <img
+                    src={ussr}
+                    alt="Logo"
+                    className={classes.logo}/>
+                <div className={classes.brand}>СССR - самая социальная сеть на React'e</div>
+                <div className={classes.sign_in_info}>
+                    <span>---id: {props.me.id}, </span>
+                    <span>login: {props.me.login}, </span>
+                    <span>email: {props.me.email}---.</span>
+                </div>
             </header>
-            <div className={classes.sign_in_info}>
-                <span>id: {props.me.id}, </span>
-                <span>login: {props.me.login}, </span>
-                <span>email: {props.me.email}.</span>
-            </div>
+
         </div>
     );
 

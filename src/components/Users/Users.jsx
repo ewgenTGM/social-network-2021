@@ -1,15 +1,17 @@
 import React, {useEffect} from 'react';
 import styles from './Users.module.css';
 import User from "./User";
-import axios from "axios";
+import {getUsers} from "../../DAL/api";
 
 const Users = (props) => {
-
     useEffect(() => {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users?page=4', {
-            withCredentials: true
-        })
-            .then(response => props.setUsers(response.data.items));
+        getUsers(5).then(response => {
+            props.setCurrentPage(1);
+            props.setUsersPerPage(10);
+            props.setUsers(response.data.items);
+            props.setTotalUsersCount(response.data.totalCount);
+            props.setPageCount(Math.ceil((props.totalUsersCount / props.usersPerPage)))
+        });
     }, []);
 
     const users = props.users.map(user => (<User
@@ -19,10 +21,15 @@ const Users = (props) => {
         unfollow={props.unfollow}/>));
     return (
         <>
+            <span>Current page: {props.currentPage}</span><br/>
+            <span>Users per page: {props.usersPerPage}</span><br/>
+            <span>Page count: {props.pageCount}</span><br/>
+            <span>Total users count: {props.totalUsersCount}</span>
             <h3 className={styles.users_title}>Пользователи соцсети:</h3>
             <div className={styles.users}>
                 {users}
             </div>
+
         </>
     );
 }

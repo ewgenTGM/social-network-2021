@@ -61,6 +61,9 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case ADD_POST: {
+            if (action.payload.trim() === '') {
+                return state;
+            }
             const newPost = {
                 id: v1(),
                 message: action.payload,
