@@ -1,83 +1,60 @@
-import {v1} from "uuid";
-
 const FOLLOW = 'FOLLOW',
-    UNFOLLOW = 'UNFOLLOW';
+    UNFOLLOW = 'UNFOLLOW',
+    SET_USERS = 'SET_USERS';
 
-export const followAC = (userId) => {
-    return {type: FOLLOW, payload: userId}
-}
+export const followAC = id => ({type: FOLLOW, payload: id});
 
-export const unfollowAC = (userId) => {
-    return {type: UNFOLLOW, payload: userId}
-}
+export const unfollowAC = id => ({type: UNFOLLOW, payload: id});
+
+export const setUsersAC = users => ({type: SET_USERS, payload: users});
 
 const initialState = {
 
     users: [
         {
-            userid: v1(),
             name: 'Марина',
-            surname: 'Бичан',
-            location: {
-                country: 'Баларусь',
-                city: 'Мозырь'
+            id: 11,
+            photos: {
+                small: null,
+                large: null,
             },
             status:
                 'Идейные соображения высшего порядка, а также дальнейшее развитие различных форм деятельности.',
-            isFollow: true,
+            followed: true,
 
         },
         {
-            userid: v1(),
             name: 'Иван',
-            surname: 'Алесич',
-            location: {
-                country: 'Баларусь',
-                city: 'Лельчицы'
+            id: 22,
+            photos: {
+                small: null,
+                large: null,
             },
             status:
                 'Повседневная практика показывает, что постоянный количественный рост и сфера нашей активности!',
-            isFollow: true,
-        },
-        {
-            userid: v1(),
-            name: 'Дарья',
-            surname: 'Иванова',
-            location: {
-                country: 'Баларусь',
-                city: 'Минск'
-            },
-            status:
-                'Товарищи! сложившаяся структура организации требуют от нас анализа направлений прогрессивного развития.',
-            isFollow: false,
-        },
-        {
-            userid: v1(),
-            name: 'Алексей',
-            surname: 'Никишов',
-            location: {
-                country: 'Баларусь',
-                city: 'Брагин'
-            },
-            status:
-                'Значимость этих проблем настолько очевидна, что реализация намеченных плановых заданий обеспечивает.',
-            isFollow: false,
-        },
+            followed: true,
+        }
     ]
 }
 
 const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
+        case SET_USERS: {
+            return {
+                ...state,
+                users: [...action.payload]
+            }
+        }
         case FOLLOW:
             return {
                 ...state,
-                isFollow: true
+                followed: true
             }
         case UNFOLLOW: {
             return {
                 ...state,
-                isFollow: false
+                followed: false
             }
         }
         default:
