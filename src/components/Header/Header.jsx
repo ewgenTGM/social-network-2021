@@ -1,11 +1,14 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./Header.module.css";
 import ussr from '../../Logo.svg';
-import {getMe} from "../../DAL/api";
+import userAPI from "../../DAL/api";
 
 const Header = (props) => {
+
+    const [isLogged, setIsLogged] = useState(false);
+
     useEffect(() => {
-        getMe().then(response => {
+        userAPI.getMe().then(response => {
             props.setMe(response.data.data.id, response.data.data.login, response.data.data.email);
         });
     }, []);

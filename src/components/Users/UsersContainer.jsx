@@ -1,6 +1,6 @@
 import {
     followAC,
-    setCurrentPageAC,
+    setCurrentPageAC, setIsFetchingAC,
     setPageCountAC, setTotalUsersCountAC,
     setUsersAC,
     setUsersPerPageAC,
@@ -15,19 +15,21 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         usersPerPage: state.usersPage.usersPerPage,
         pageCount: state.usersPage.pageCount,
-        totalUsersCount: state.usersPage.totalUsersCount
+        totalUsersCount: state.usersPage.totalUsersCount,
+        isFetching: state.usersPage.isFetching
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUsers: (users) => dispatch(setUsersAC(users)),
-        setUsersPerPage: (usersCount) => dispatch(setUsersPerPageAC(usersCount)),
-        setCurrentPage: (pageNumber) => dispatch(setCurrentPageAC(pageNumber)),
-        setPageCount: (pageCount) => dispatch(setPageCountAC(pageCount)),
-        setTotalUsersCount: (totalUsersCount) => dispatch(setTotalUsersCountAC(totalUsersCount)),
-        follow: (id) => dispatch(followAC(id)),
-        unfollow: (id) => dispatch(unfollowAC(id)),
+        setUsers: users => dispatch(setUsersAC(users)),
+        setUsersPerPage: usersCount => dispatch(setUsersPerPageAC(usersCount)),
+        setCurrentPage: pageNumber => dispatch(setCurrentPageAC(pageNumber)),
+        setPageCount: pageCount => dispatch(setPageCountAC(pageCount)),
+        setTotalUsersCount: totalUsersCount => dispatch(setTotalUsersCountAC(totalUsersCount)),
+        follow: id => dispatch(followAC(id)),
+        unfollow: id => dispatch(unfollowAC(id)),
+        setIsFetching: isFetching => dispatch(setIsFetchingAC(isFetching))
     }
 }
 

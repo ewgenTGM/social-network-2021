@@ -1,17 +1,25 @@
-import * as axios from "axios";
+import axios from "axios";
 
 const API_KEY = 'a3f1a737-1827-41ef-9c53-49394bbbe1b8';
-
 const BASE_URL = 'https://social-network.samuraijs.com/api/1.0';
 
-export const getUsers = (page) => {
-    return axios.get(BASE_URL + '/users?page=' + page, {
-        withCredentials: true
-    });
+const instance = axios.create({
+    baseURL: BASE_URL,
+    withCredentials: true,
+    headers: {
+        "API-KEY": API_KEY
+    }
+});
+
+
+const getUsers = (page) => {
+    return instance.get('/users?page=' + page);
 
 }
-export const getMe = () => {
-    return axios.get(BASE_URL + '/auth/me', {
-        withCredentials: true
-    })
+const getMe = () => {
+    return instance.get('/auth/me')
 }
+
+const userAPI = {getUsers, getMe}
+
+export default userAPI;
