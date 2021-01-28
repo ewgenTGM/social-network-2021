@@ -18,7 +18,11 @@ function App(props) {
                         <Route
                             exact={true}
                             render={() => <UserProfile/>}
-                            path='/userProfile'/>
+                            path='/userProfile/:id'/>
+                        <Route
+                            exact={true}
+                            render={() => <UserProfile/>}
+                            path='/userProfile/'/>
                         <Route
                             exact={true}
                             render={() => <UserProfile/>}

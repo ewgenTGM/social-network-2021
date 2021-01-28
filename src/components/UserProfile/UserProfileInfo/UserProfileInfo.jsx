@@ -35,7 +35,7 @@ const UserProfileInfo = (props) => {
                     </div>
                     <div>
                         <span>Веб-сайт:</span>
-                        <a href='www.vk.com'>{site}</a>
+                        <a href='https://www.vk.com'>{site}</a>
                     </div>
                 </div>
             </div>

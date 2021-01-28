@@ -1,3 +1,5 @@
+import userAPI from "../DAL/api";
+
 const FOLLOW = 'FOLLOW',
     UNFOLLOW = 'UNFOLLOW',
     SET_USERS = 'SET_USERS',
@@ -20,13 +22,23 @@ export const followAC = id => ({type: FOLLOW, payload: id}),
     setIsFetchingAC = isFetching => ({type: SET_IS_FETCHING, payload: isFetching});
 
 
+export const setUsers = pageNumber => {
+    return dispatch => {
+        dispatch(setIsFetchingAC(true));
+        userAPI.getUsers(pageNumber).then(response => {
+            dispatch(setUsersAC(response.data.items));
+            dispatch(setTotalUsersCountAC(response.data.totalCount));
+            dispatch(setIsFetchingAC(false));
+        })
+    }
+}
+
+
 const initialState = {
 
-    users: [
-
-    ],
+    users: [],
     pageCount: 0,
-    currentPage: 0,
+    currentPage: 1,
     usersPerPage: 10,
     totalUsersCount: 0,
     isFetching: false

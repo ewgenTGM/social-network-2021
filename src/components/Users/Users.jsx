@@ -1,25 +1,12 @@
 import React, {useEffect} from 'react';
 import styles from './Users.module.css';
 import User from "./User";
-import userAPI from "../../DAL/api";
 import spinner_image from './spinner.gif';
 
 const Users = (props) => {
-
     useEffect(() => {
-        console.log('props user before:', props.users)
-        props.setIsFetching(true);
-        userAPI.getUsers(5).then(response => {
-            props.setCurrentPage(1);
-            props.setUsersPerPage(10);
-            props.setUsers(response.data.items);
-            props.setTotalUsersCount(response.data.totalCount);
-            props.setPageCount(Math.ceil((props.totalUsersCount / props.usersPerPage)));
-            props.setIsFetching(false);
-        });
-
-        console.log('props user after:', props.users)
-    }, []);
+        props.setUsers(props.currentPage);
+    }, [props.currentPage]);
 
     const users = props.users.map(user => (<User
         user={user}
@@ -39,10 +26,6 @@ const Users = (props) => {
             <>
                 <span>Current page: {props.currentPage}</span>
                 <br/>
-                <span>Users per page: {props.usersPerPage}</span>
-                <br/>
-                <span>Page count: {props.pageCount}</span>
-                <br/>
                 <span>Total users count: {props.totalUsersCount}</span>
             </>
         )
@@ -50,8 +33,29 @@ const Users = (props) => {
 
     return (
         <>
+
             {props.isFetching ? spinner : usersAPIInfo}
             <h3 className={styles.users_title}>Пользователи соцсети:</h3>
+            <button
+                className={styles.set_page_btn}
+                onClick={() => props.setCurrentPage(1)}>1
+            </button>
+            <button
+                className={styles.set_page_btn}
+                onClick={() => props.setCurrentPage(2)}>2
+            </button>
+            <button
+                className={styles.set_page_btn}
+                onClick={() => props.setCurrentPage(3)}>3
+            </button>
+            <button
+                className={styles.set_page_btn}
+                onClick={() => props.setCurrentPage(4)}>4
+            </button>
+            <button
+                className={styles.set_page_btn}
+                onClick={() => props.setCurrentPage(5)}>5
+            </button>
             <div className={styles.users}>
                 {props.isFetching ? spinner : users}
             </div>
