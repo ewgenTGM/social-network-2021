@@ -6,6 +6,8 @@ import NotFound from "./components/NotFound/NotFound";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import UserPageContainer from "./components/Users/UserPageContainer";
+import LoginPage from "./components/LoginPage/LoginPage";
 
 function App(props) {
     return (
@@ -17,8 +19,8 @@ function App(props) {
                     <Switch>
                         <Route
                             exact={true}
-                            render={() => <UserProfile/>}
-                            path='/userProfile/:id'/>
+                            render={() => <UserPageContainer/>}
+                            path='/userPage/:id'/>
                         <Route
                             exact={true}
                             render={() => <UserProfile/>}
@@ -30,9 +32,14 @@ function App(props) {
                         <Route
                             render={() => <DialogsContainer/>}
                             path='/dialogs'/>
-                        <Route exact={true}
-                               render={() => <UsersContainer/>}
-                               path='/users/'/>
+                        <Route
+                            exact={true}
+                            render={() => <UsersContainer/>}
+                            path='/users/'/>
+                        <Route
+                            exact={true}
+                            render={() => <LoginPage/>}
+                            path='/loginPage'/>
                         <Route component={NotFound}/>
                     </Switch>
                 </div>

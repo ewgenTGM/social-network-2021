@@ -1,0 +1,17 @@
+.userPage{
+    display: flex;
+    align-items: center;
+}
+
+.avatar_large {
+    width: 250px;
+    height: 250px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px blue;
+}
+
+.user_page_info{
+    width: 100%;
+    margin: 0 20px;
+}

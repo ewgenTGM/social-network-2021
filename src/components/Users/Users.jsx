@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from './Users.module.css';
 import User from "./User";
-import spinner_image from './spinner.gif';
+import Spinner from "../Spinner/Spinner";
 
 const Users = (props) => {
     useEffect(() => {
@@ -15,12 +15,6 @@ const Users = (props) => {
         follow={props.follow}
         unfollow={props.unfollow}/>));
 
-    const spinner = (
-        <img
-            className={styles.spinner}
-            src={spinner_image}
-            alt=''/>
-    );
 
     const usersAPIInfo = (
             <>
@@ -34,7 +28,7 @@ const Users = (props) => {
     return (
         <>
 
-            {props.isFetching ? spinner : usersAPIInfo}
+            {props.isFetching ? <Spinner/> : usersAPIInfo}
             <h3 className={styles.users_title}>Пользователи соцсети:</h3>
             <button
                 className={styles.set_page_btn}
@@ -57,7 +51,7 @@ const Users = (props) => {
                 onClick={() => props.setCurrentPage(5)}>5
             </button>
             <div className={styles.users}>
-                {props.isFetching ? spinner : users}
+                {props.isFetching ? <Spinner/> : users}
             </div>
         </>
     );

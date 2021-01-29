@@ -7,7 +7,7 @@ const User = (props) => {
     return (
         <div className={styles.user}>
             <div className={styles.user_info_follow}>
-                <Link to={`userProfile/${props.user.id}`}><img
+                <Link to={`userPage/${props.user.id}`}><img
                     src={props.user.photos.small ? props.user.photos.small : noAvatar}
                     alt={'ava'}/></Link>
 

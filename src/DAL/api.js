@@ -20,6 +20,10 @@ const getMe = () => {
     return instance.get('/auth/me')
 }
 
-const userAPI = {getUsers, getMe}
+const getUserInfoById = (id) => {
+    return instance.get('/profile/' + id);
+}
+
+const userAPI = {getUsers, getMe, getUserInfoById}
 
 export default userAPI;
