@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 
-export const SEND_MESSAGE = 'SEND_MESSAGE'
+const SEND_MESSAGE = 'SEND_MESSAGE'
 
 
 export const sendMessageAC = (text) => {

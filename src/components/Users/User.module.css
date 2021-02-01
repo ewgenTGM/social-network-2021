@@ -1,9 +1,10 @@
 .user {
     box-shadow: 0 0 3px black;
+    flex-basis: 30%;
+    margin: 5px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: 15px;
     border-radius: 3px;
 }
 

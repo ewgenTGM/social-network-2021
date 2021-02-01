@@ -1,15 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import classes from "./Header.module.css";
 import ussr from '../../Logo.svg';
 import userAPI from "../../DAL/api";
 
 const Header = (props) => {
 
-    const [isLogged, setIsLogged] = useState(false);
-
     useEffect(() => {
         userAPI.getMe().then(response => {
             props.setMe(response.data.data.id, response.data.data.login, response.data.data.email);
+            props.setIsAuth(response.data.resultCode === 0);
         });
     }, []);
 
@@ -25,6 +24,7 @@ const Header = (props) => {
                     <span>---id: {props.me.id}, </span>
                     <span>login: {props.me.login}, </span>
                     <span>email: {props.me.email}---.</span>
+                    <span>isAuth: {props.isAuth ? 'yes' : 'no'}---.</span>
                 </div>
             </header>
 

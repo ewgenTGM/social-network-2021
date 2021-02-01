@@ -5,8 +5,14 @@ import Spinner from "../Spinner/Spinner";
 
 const Users = (props) => {
     useEffect(() => {
-        props.setUsers(props.currentPage);
-    }, [props.currentPage]);
+        console.log('did mount')
+        props.setUsers(1);
+        props.setCurrentPage(1)
+    }, []);
+
+    // useEffect(() => {
+    //     return props.setCurrentPage(1)
+    // }, []);
 
     const users = props.users.map(user => (<User
         user={user}
@@ -14,7 +20,6 @@ const Users = (props) => {
         followed={props.followed}
         follow={props.follow}
         unfollow={props.unfollow}/>));
-
 
     const usersAPIInfo = (
             <>
@@ -25,31 +30,24 @@ const Users = (props) => {
         )
     ;
 
+
+    const pagesButton = [];
+    for (let i = 1; i < 100; i++) {
+        pagesButton.push(<button
+            className={styles.set_page_btn}
+            onClick={() => {
+                props.setCurrentPage(i);
+                props.setUsers(i)
+            }}>{i}
+        </button>)
+    }
+
+
     return (
         <>
-
             {props.isFetching ? <Spinner/> : usersAPIInfo}
             <h3 className={styles.users_title}>Пользователи соцсети:</h3>
-            <button
-                className={styles.set_page_btn}
-                onClick={() => props.setCurrentPage(1)}>1
-            </button>
-            <button
-                className={styles.set_page_btn}
-                onClick={() => props.setCurrentPage(2)}>2
-            </button>
-            <button
-                className={styles.set_page_btn}
-                onClick={() => props.setCurrentPage(3)}>3
-            </button>
-            <button
-                className={styles.set_page_btn}
-                onClick={() => props.setCurrentPage(4)}>4
-            </button>
-            <button
-                className={styles.set_page_btn}
-                onClick={() => props.setCurrentPage(5)}>5
-            </button>
+            {pagesButton}
             <div className={styles.users}>
                 {props.isFetching ? <Spinner/> : users}
             </div>

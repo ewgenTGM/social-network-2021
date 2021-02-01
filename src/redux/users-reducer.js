@@ -39,7 +39,7 @@ const initialState = {
     users: [],
     pageCount: 0,
     currentPage: 1,
-    usersPerPage: 10,
+    usersPerPage: 20,
     totalUsersCount: 0,
     isFetching: false
 }

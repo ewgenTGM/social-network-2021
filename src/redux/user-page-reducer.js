@@ -1,6 +1,6 @@
 import userAPI from "../DAL/api";
 
-export const SET_USER_INFO = 'SET_USER_INFO', SET_IS_FETCHING = 'SET_IS_FETCHING';
+const SET_USER_INFO = 'SET_USER_INFO', SET_IS_FETCHING = 'SET_IS_FETCHING';
 
 export const setUserInfoAC = userInfo => ({type: SET_USER_INFO, payload: userInfo}),
     setIsFetchingAC = isFetching => ({type: SET_IS_FETCHING, payload: isFetching});

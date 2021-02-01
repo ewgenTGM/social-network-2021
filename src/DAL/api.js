@@ -13,7 +13,7 @@ const instance = axios.create({
 
 
 const getUsers = (page) => {
-    return instance.get('/users?page=' + page);
+    return instance.get('/users?page=' + page + '&count=12');
 
 }
 const getMe = () => {

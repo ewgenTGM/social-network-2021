@@ -1,33 +1,34 @@
 import React, {useEffect} from 'react'
 import Spinner from "../Spinner/Spinner";
 import styles from './UserPage.module.css'
+import noAvatar from './no_avatar.png'
 
 const UserPage = (props) => {
     useEffect(() => {
-        props.setUserInfo(props.match.params.id);
+        props.setUserInfo(props.match.params.id)
     }, []);
 
+    const contacts = [];
+    for (const key in props.userInfo.contacts) {
+        if (props.userInfo.contacts[key]) {
+            contacts.push(<li>{key}: {props.userInfo.contacts[key]}</li>)
+        }
+    }
     const content = (
         <div className={styles.userPage}>
             <img
-                src={props.userInfo.photos.large}
+                src={props.userInfo.photos.large ? props.userInfo.photos.large : noAvatar}
                 className={styles.avatar_large}
                 alt=""/>
             <div className={styles.user_page_info}>
                 <h2>{props.userInfo.fullName}</h2>
                 <p>Id: {props.userInfo.userId}</p>
                 <p>Обо мне: {props.userInfo.aboutMe ? props.userInfo.aboutMe : 'Здесь пока пусто....'}</p>
-                <p>Контакты:</p>
-                <ul>
-                    <li>facebook: {props.userInfo.contacts.facebook ? props.contacts.facebook : 'Не известно'}</li>
-                    <li>website: {props.userInfo.contacts.website ? props.contacts.website : 'Не известно'}</li>
-                    <li>vk: {props.userInfo.contacts.vk ? props.contacts.vk : 'Не известно'}</li>
-                    <li>twitter: {props.userInfo.contacts.twitter ? props.contacts.twitter : 'Не известно'}</li>
-                    <li>instagram: {props.userInfo.contacts.instagram ? props.contacts.instagram : 'Не известно'}</li>
-                    <li>youtube: {props.userInfo.contacts.youtube ? props.contacts.youtube : 'Не известно'}</li>
-                    <li>github: {props.userInfo.contacts.github ? props.contacts.github : 'Не известно'}</li>
-                    <li>mainLink:{props.userInfo.contacts.mainLink ? props.contacts.mainLink : 'Не известно'}</li>
-                </ul>
+                {contacts.length > 0
+                    ? (<><p>Контакты:</p>
+                        <ul>{contacts}</ul>
+                    </>)
+                    : <p>Контактов нет...</p>}
                 <p>Ищет работу?: {props.userInfo.lookingForAJob ? 'да' : 'нет'}</p>
             </div>
         </div>
