@@ -6,7 +6,7 @@ const withAuthRedirect = (Component) => {
 
     const RedirectComponent = (props) => {
         if (!props.isAuth) {
-            return <Redirect to='loginPage'/>
+            return <Redirect to='loginForm'/>
         }
         return <Component {...props}/>
     }
