@@ -8,6 +8,7 @@ const UserProfilePosts = (props) => {
         key={post.id}
         addLike={props.addLike}
         addDislike={props.addDislike}
+        removePost={props.removePost}
     />);
     return (
         <>

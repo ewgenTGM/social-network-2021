@@ -1,19 +1,20 @@
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import UserProfilePosts from "./UserProfilePosts";
-import {addDislikeAC, addLikeAC} from "../../../redux/profile-reducer";
+import { addDislikeAC, addLikeAC, removePostAC } from "../../../redux/profile-reducer";
 
-const mapStateToProps = (store) => {
+const mapStateToProps = ( store ) => {
     return {
         posts: store.userProfilePage.userPosts,
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = ( dispatch ) => {
     return {
-        addLike: (id)=> dispatch(addLikeAC(id)),
-        addDislike: (id)=> dispatch(addDislikeAC(id))
+        addLike: ( id ) => dispatch( addLikeAC( id ) ),
+        addDislike: ( id ) => dispatch( addDislikeAC( id ) ),
+        removePost: ( id ) => dispatch( removePostAC( id ) )
     }
 }
 
-const UserProfilePostsContainer = connect(mapStateToProps, mapDispatchToProps)(UserProfilePosts);
+const UserProfilePostsContainer = connect( mapStateToProps, mapDispatchToProps )( UserProfilePosts );
 export default UserProfilePostsContainer;

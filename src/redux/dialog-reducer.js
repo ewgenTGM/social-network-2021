@@ -9,37 +9,33 @@ export const sendMessageAC = (text) => {
 
 const initialState = {
     dialogs: [
-        {userId: v1(), userName: 'Марина'},
-        {userId: v1(), userName: 'Иван'},
-        {userId: v1(), userName: 'Дарья'},
-        {userId: v1(), userName: 'Алексей'},
-        {userId: v1(), userName: 'Саня'},
+        {userId: 0, userName: 'Марина'},
+        {userId: 1, userName: 'Иван'},
+        {userId: 2, userName: 'Дарья'},
+        {userId: 3, userName: 'Алексей'},
+        {userId: 4, userName: 'Саня'},
     ],
     messages: [
-        {messageId: v1(), message: 'Привет, Марина'},
-        {messageId: v1(), message: 'Привет, Иван'},
-        {messageId: v1(), message: 'Привет, Дарья'},
-        {messageId: v1(), message: 'Привет, Алексей'},
-        {messageId: v1(), message: 'Привет, Саня'},
+        {messageId: 0, message: 'Привет, Марина'},
+        {messageId: 1, message: 'Привет, Иван'},
+        {messageId: 2, message: 'Привет, Дарья'},
+        {messageId: 3, message: 'Привет, Алексей'},
+        {messageId: 4, message: 'Привет, Саня'},
     ],
 }
 
 const dialogReducer = (state = initialState, action) => {
 
-
     switch (action.type) {
         case SEND_MESSAGE: {
-
             const newMessage = {
                 messageId: v1(),
                 message: action.payload
             };
-
             return {
                 ...state,
                 messages: [newMessage, ...state.messages]
             }
-
         }
         default:
             return state
