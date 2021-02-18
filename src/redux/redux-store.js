@@ -6,9 +6,10 @@ import headerReducer from "./header-reducer";
 import thunkMW from 'redux-thunk';
 import userPageReducer from "./user-page-reducer";
 import authReducer from "./auth-reducer";
+import { profileReducerTs } from "./redux-ts/profile-reducer-ts";
 
 const reducers = combineReducers( {
-    userProfilePage: profileReducer,
+    userProfilePage: profileReducerTs,
     userDialogsPage: dialogReducer,
     usersPage: usersReducer,
     header: headerReducer,

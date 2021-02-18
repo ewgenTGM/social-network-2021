@@ -1,15 +1,15 @@
-import {connect} from "react-redux";
-import UserProfileInfo from "./UserProfileInfo";
+import { connect } from "react-redux";
+import { UserProfileInfo } from "./UserProfileInfo";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ( state ) => {
     return {
-        userInfo: state.userProfilePage.userInfo,
+        userInfo: state.userProfilePage.userInfo
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = ( dispatch ) => {
     return {}
 }
-const UserProfileInfoContainer = connect(mapStateToProps, mapDispatchToProps)(UserProfileInfo);
+const UserProfileInfoContainer = connect( mapStateToProps, mapDispatchToProps )( UserProfileInfo );
 
 export default UserProfileInfoContainer;

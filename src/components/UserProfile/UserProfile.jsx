@@ -9,7 +9,7 @@ const UserProfile = () => {
     return (
         <>
             <UserProfileInfoContainer/>
-            <NewPostContainer/>
+            {/*<NewPostContainer/>*/}
             <UserProfilePostsContainer/>
         </>
     );

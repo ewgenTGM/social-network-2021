@@ -13,15 +13,15 @@ function App( props ) {
 
     return (
         <>
-            <HeaderContainer/>
+            {/*<HeaderContainer/>*/ }
             <div className={ styles.app_container }>
                 <SideBar/>
                 <div className={ styles.user_content }>
                     <Switch>
-                        <Route
+                        {/*<Route
                             exact={ true }
                             render={ () => <UserPageContainer/> }
-                            path='/userPage/:id'/>
+                            path='/userPage/:id'/>*/}
                         <Route
                             exact={ true }
                             render={ () => <UserProfile/> }
@@ -30,7 +30,7 @@ function App( props ) {
                             exact={ true }
                             render={ () => <UserProfile/> }
                             path='/'/>
-                        <Route
+                        {/*<Route
                             render={ () => <DialogsContainer/> }
                             path='/dialogs'/>
                         <Route
@@ -41,7 +41,7 @@ function App( props ) {
                             exact={ true }
                             render={ () => <LoginPage/> }
                             path='/loginForm'/>
-                        <Route component={ NotFound }/>
+                        <Route component={ NotFound }/>*/ }
                     </Switch>
                 </div>
             </div>
