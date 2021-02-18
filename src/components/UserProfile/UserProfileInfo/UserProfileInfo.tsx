@@ -1,18 +1,14 @@
 import React from 'react';
 import styles from './UserProfileInfo.module.css';
 import avatar from '../../../avatar_sm.jpg';
+import { UserInfoType } from '../../../redux/redux-ts/profile-reducer-ts';
 
-type UserProfileInfoPropsType = {
-  userInfo: {
-    name: string
-    born: string
-    city: string
-    edu: string
-    site: string
-  }
-
+type PropsType = {
+  userInfo: UserInfoType
 }
-export const UserProfileInfo = ( props: UserProfileInfoPropsType ) => {
+
+
+export const UserProfileInfo = ( props: PropsType ) => {
   const { name, born, city, edu, site } = props.userInfo;
   return (
       <>

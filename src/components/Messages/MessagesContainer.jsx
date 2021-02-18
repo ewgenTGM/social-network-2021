@@ -1,19 +1,19 @@
-import {sendMessageAC} from "../../redux/dialog-reducer";
-import Messages from "./Messages";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import { sendMessageAC } from "../../redux/redux-ts/dialog-reducer-ts";
+import { Messages } from "./Messages";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ( state ) => {
     return {
         messages: state.userDialogsPage.messages
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = ( dispatch ) => {
     return {
-        sendMessage: (messageText) => dispatch(sendMessageAC(messageText)),
+        sendMessage: ( messageText ) => dispatch( sendMessageAC( messageText ) ),
     }
 }
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+const MessagesContainer = connect( mapStateToProps, mapDispatchToProps )( Messages );
 
 export default MessagesContainer;
 

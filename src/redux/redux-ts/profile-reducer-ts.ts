@@ -39,7 +39,7 @@ export const addLikeAC = ( postId: string ): AddLikeActionType => {
   return { type: ADD_LIKE, payload: postId };
 };
 
-type UserInfoType = {
+export type UserInfoType = {
   name: string
   born: string
   city: string
@@ -47,7 +47,7 @@ type UserInfoType = {
   site: string
 }
 
-type UserPostType = {
+export type UserPostType = {
   id: string
   message: string
   likes: number

@@ -13,12 +13,12 @@ export const sendMessageAC = ( text:string ): SendMessageActionType => {
   return { type: SEND_MESSAGE, payload: text };
 };
 
-type DialogType = {
+export type DialogType = {
   userId: string
   userName: string
 }
 
-type MessageType = {
+export type MessageType = {
   messageId: string
   message: string
 }

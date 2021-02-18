@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import UserProfilePosts from "./UserProfilePosts";
-import { addDislikeAC, addLikeAC, removePostAC } from "../../../redux/profile-reducer";
+import { UserProfilePosts } from "./UserProfilePosts";
+import { addDislikeAC, addLikeAC, removePostAC } from "../../../redux/redux-ts/profile-reducer-ts";
 
 const mapStateToProps = ( store ) => {
     return {
