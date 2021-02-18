@@ -18,10 +18,10 @@ export const App = () => {
           <SideBar/>
           <div className={ styles.user_content }>
             <Switch>
-              {/*<Route
-               exact={ true }
-               render={ () => <UserPageContainer/> }
-               path='/userPage/:id'/>*/ }
+              <Route
+                  exact={ true }
+                  render={ () => <UserPageContainer/> }
+                  path='/userPage/:id'/>
               <Route
                   exact={ true }
                   render={ () => <UserProfile/> }

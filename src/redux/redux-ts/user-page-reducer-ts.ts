@@ -48,7 +48,7 @@ type PhotoType = {
   large: string | null
 }
 
-type UserInfoType = {
+export type UserInfoType = {
   aboutMe: string | null
   contacts: ContactType
   lookingForAJob: boolean

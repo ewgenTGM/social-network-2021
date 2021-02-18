@@ -1,3 +1,4 @@
+/*
 import userAPI from "../DAL/api";
 
 const SET_USER_INFO = 'SET_USER_INFO', SET_IS_FETCHING = 'SET_IS_FETCHING';
@@ -58,4 +59,4 @@ const userPageReducer = (state = initialState, action) => {
     }
 }
 
-export default userPageReducer;
+export default userPageReducer;*/
