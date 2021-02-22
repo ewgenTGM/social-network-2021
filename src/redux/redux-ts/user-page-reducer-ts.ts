@@ -1,4 +1,5 @@
 import userAPI from '../../DAL/api';
+import { Dispatch } from 'redux';
 
 const SET_USER_INFO = 'SET_USER_INFO', SET_IS_FETCHING = 'SET_IS_FETCHING';
 
@@ -20,7 +21,7 @@ export const setIsFetchingAC = ( isFetching: boolean ): ActionType => ( {
   payload: isFetching
 } );
 
-type DispatchType = ( action: ActionType ) => UserPageStateType;
+type DispatchType = Dispatch<ActionType>;
 
 export const setUserInfo = ( id: string ) => {
   return ( dispatch: DispatchType ) => {
@@ -32,16 +33,19 @@ export const setUserInfo = ( id: string ) => {
   };
 };
 
-type ContactType = {
-  facebook: null | string
-  website: null | string
-  vk: null | string
-  twitter: null | string
-  instagram: null | string
-  youtube: null | string
-  github: null | string
-  mainLink: null | string
-}
+type ContactType = { [key: string]: string | null }
+
+/*type ContactType = {
+ [key: string]: string | null
+ facebook: null | string
+ website: null | string
+ vk: null | string
+ twitter: null | string
+ instagram: null | string
+ youtube: null | string
+ github: null | string
+ mainLink: null | string
+ }*/
 
 type PhotoType = {
   small: string | null
@@ -50,11 +54,13 @@ type PhotoType = {
 
 export type UserInfoType = {
   aboutMe: string | null
-  contacts: ContactType
+  contacts: Array<ContactType>
   lookingForAJob: boolean
   lookingForAJobDescription: string | null
-  fullName: string | null
-  userId: string | null
+  name: string | null
+  userId: string
+  id: string
+  status: string
   photos: PhotoType
 }
 
@@ -66,20 +72,13 @@ type UserPageStateType = {
 const initialState: UserPageStateType = {
   userInfo: {
     aboutMe: null,
-    contacts: {
-      facebook: null,
-      website: null,
-      vk: null,
-      twitter: null,
-      instagram: null,
-      youtube: null,
-      github: null,
-      mainLink: null
-    },
+    contacts: [],
     lookingForAJob: false,
     lookingForAJobDescription: null,
-    fullName: '',
-    userId: null,
+    name: '',
+    userId: '',
+    id: '',
+    status: '',
     photos: {
       small: null,
       large: null
@@ -93,7 +92,8 @@ export const userPageReducerTs = ( state: UserPageStateType = initialState, acti
     case SET_USER_INFO:
       return {
         ...state,
-        userInfo: action.payload
+        userInfo: { ...action.payload, userId: action.payload.id }
+
       };
     case SET_IS_FETCHING:
       return {

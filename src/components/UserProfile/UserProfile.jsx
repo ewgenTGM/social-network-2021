@@ -2,10 +2,9 @@ import React from 'react';
 import UserProfileInfoContainer from "./UserProfileInfo/UserProfileInfoContainer";
 import UserProfilePostsContainer from "./UserProfilePosts/UserProfilePostsContainer";
 import NewPostContainer from "../NewPost/NewPostContainer";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
-
-const UserProfile = () => {
+const _UserProfile = () => {
     return (
         <>
             <UserProfileInfoContainer/>
@@ -15,6 +14,4 @@ const UserProfile = () => {
     );
 };
 
-const UserProfileWithUrlData = withRouter(UserProfile)
-
-export default UserProfileWithUrlData;
+export const UserProfile = withRouter( _UserProfile );

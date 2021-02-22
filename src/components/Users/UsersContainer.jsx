@@ -1,10 +1,10 @@
 import {
     followAC, setCurrentPageAC,
-    setUsers, setUsersAC,
+    setUsers,
     unfollowAC
-} from "../../redux/users-reducer";
+} from "../../redux/redux-ts/users-reducer";
 import {connect} from "react-redux";
-import Users from "./Users";
+import { Users } from "./Users";
 
 const mapStateToProps = (state) => {
     return {
@@ -12,7 +12,8 @@ const mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         totalUsersCount: state.usersPage.totalUsersCount,
         isFetching: state.usersPage.isFetching,
-        totalPages: Math.ceil(state.totalUsersCount / 20)
+        totalPages: Math.ceil(state.totalUsersCount / 20),
+        followed: false
     }
 }
 

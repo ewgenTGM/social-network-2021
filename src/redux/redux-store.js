@@ -1,19 +1,19 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import usersReducer from "./users-reducer";
-import headerReducer from "./header-reducer";
+import { usersReducerTs } from "./redux-ts/users-reducer";
 import thunkMW from 'redux-thunk';
-import authReducer from "./auth-reducer";
 import { profileReducerTs } from "./redux-ts/profile-reducer-ts";
 import { dialogReducerTs } from "./redux-ts/dialog-reducer-ts";
 import { userPageReducerTs } from "./redux-ts/user-page-reducer-ts";
+import { authReducerTs } from "./redux-ts/auth-reducer-ts";
+import { headerReducerTs } from "./header-reducer";
 
 const reducers = combineReducers( {
     userProfilePage: profileReducerTs,
     userDialogsPage: dialogReducerTs,
-    usersPage: usersReducer,
-    header: headerReducer,
+    usersPage: usersReducerTs,
+    header: headerReducerTs,
     userPage: userPageReducerTs,
-    auth: authReducer
+    auth: authReducerTs
 } )
 
 export const store = createStore( reducers, applyMiddleware( thunkMW ) );

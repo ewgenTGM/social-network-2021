@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
-import Header from "./Header";
 import {setMeAC} from "../../redux/header-reducer";
-import {setIsAuthAC} from "../../redux/auth-reducer";
+import { setIsAuthAC } from "../../redux/redux-ts/auth-reducer-ts";
+import { Header } from "./Header";
 
 const mapStateToProps = (state) => {
     return {
